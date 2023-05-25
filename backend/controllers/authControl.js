@@ -46,4 +46,15 @@ const logoutUser = (req, res) => {
     });
 }
 
-module.exports = { registerUser, loginUser, requireAuth, logoutUser };
+const authUser = (req, res) => {
+    // Check if the user is authenticated by verifying the session
+    if (req.session.userId) {
+        // User is authenticated, proceed with the protected operation
+        res.json({ message: 'Protected route accessed.' });
+    } else {
+        // User is not authenticated, send an unauthorized response
+        res.status(401).json({ error: 'Unauthorized access.' });
+    }
+}
+
+module.exports = { registerUser, loginUser, requireAuth, logoutUser, authUser };
