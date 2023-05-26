@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res) => {
     try {
@@ -22,7 +23,9 @@ const loginUser = async (req, res) => {
         const user = await User.login(email, password);
 
         req.session.userId = user._id;
+
         res.status(200).json({ message: 'Login successful', user });
+
     } catch (error) {
         console.error('Error logging in:', error);
         res.status(401).json({ message: error.message });
@@ -30,10 +33,11 @@ const loginUser = async (req, res) => {
 }
 
 const requireAuth = (req, res, next) => {
-    if (!req.session.userId) {
+    if (req.session.userId) {
+        next();
+    } else {
         return res.status(401).json({ message: 'Unauthorized' });
     }
-    next();
 };
 
 const logoutUser = (req, res) => {
@@ -57,4 +61,17 @@ const authUser = (req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser, requireAuth, logoutUser, authUser };
+const sessionLogin = async (req, res) => {
+    console.log(req.session)
+    if (req.session.userId) {
+
+        
+
+        res.status(200).json({ message: 'Login with session successful' });
+    } else {
+        console.error('Error logging in with session:', error);
+        res.status(401).json({ message: error.message });
+    }
+};
+
+module.exports = { registerUser, loginUser, requireAuth, logoutUser, authUser, sessionLogin };

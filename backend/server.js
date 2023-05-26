@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+
 const config = require('./config');
 
 const app = express();
@@ -17,17 +19,47 @@ mongoose.connect(config.mongodbURI, { useNewUrlParser: true, useUnifiedTopology:
         console.error('Failed to connect to MongoDB:', error);
     });
 
+// Create the MongoDB session store using the existing MongoDB connection
+const sessionStore = new MongoDBStore({
+    uri: config.mongodbURI,
+    collection: 'sessions', // Collection name for storing sessions
+    autoRemove: false // Disable automatic session removal
+});
+
 // Session middleware
 app.use(
     session({
         secret: config.sessionSecret,
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: false,
+        store: sessionStore, // Use the session store
+        cookie: {
+            // imprtant config (very important)
+            maxAge: 24 * 60 * 60 * 1000, // session expiration time (in milliseconds)
+            sameSite: 'lax', // Enable cross-site access
+            secure: false,
+        },
     })
 );
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+}));
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
+    if (req.method === "OPTIONS") {
+        return res.status(200).end();
+    } else {
+        next();
+    }
+});
+
 app.use(bodyParser.json());
 
 // Routes

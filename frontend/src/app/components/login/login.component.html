@@ -1,4 +1,4 @@
-<div class="login-box">
+<!--<div class="login-box">
   <h2>Login</h2>
   <form>
     <div class="user-box">
@@ -8,12 +8,12 @@
     <div class="user-box">
       <input type="password" name="" required="">
       <label>Password</label>
-    </div>
+    </div>-->
 <!--    <a href="#">
       <div class="loginbox"></div>
       Log in
     </a>-->
-    <a href="#" (click)="login()">
+<!--<a href="" (click)="login()">
       <div class="loginbox"></div>
       Log in
     </a>
@@ -21,4 +21,17 @@
       Register
     </a>
   </form>
+</div>-->
+
+<div class="login-container">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="assets/strawhat.png" alt="Logo">
+    </div>
+    <form (ngSubmit)="login()" class="login-form">
+      <input type="text" [(ngModel)]="email" name="email" placeholder="Username" class="login-input" required>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="login-input" required>
+      <button type="submit" class="login-button">Sign In</button>
+    </form>
+  </div>
 </div>
