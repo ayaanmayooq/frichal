@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../models/user.model';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +11,9 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private isAuthenticated: boolean = false;
-  private apiUrl = 'http://localhost:5000/api/auth/'; // Replace with your actual API endpoint
+  private apiUrl = 'http://localhost:5000/api/auth/';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
   login(email: string, password: string): Observable<any> {
     const body = { email, password };
@@ -21,6 +23,10 @@ export class AuthService {
           // No token received since backend uses express-session
 
           this.isAuthenticated = true;
+
+          // Add user data to shared service (not as secure so trying backend session handling)
+          //const user: User = response.user;
+          //this.userService.setUser(user);
 
           // Route to home page after successful login
           this.router.navigate(['/home']);
