@@ -10,7 +10,7 @@ router.post('/register', registerUser);
 router.post('/login', loginUser);
 
 // Logout route
-router.post('/logout', requireAuth, logoutUser);
+router.get('/logout', requireAuth, logoutUser);
 
 // Authorized routing
 router.get('/protected', authUser);

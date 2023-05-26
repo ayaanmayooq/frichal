@@ -48,6 +48,9 @@ app.use(cors({
 }));
 
 app.use(function (req, res, next) {
+    // To keep track of api calls
+    console.log(`${req.method} ${req.url}`);
+
     res.header('Access-Control-Allow-Credentials', true);
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');

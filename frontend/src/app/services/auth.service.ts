@@ -37,10 +37,22 @@ export class AuthService {
   }
 
   // Method to perform logout
-  logout(email: string): Observable<any> {
-    this.isAuthenticated = false;
-    const body = { email };
-    return this.http.post<any>(this.apiUrl + 'logout', body);
+  logout(): Observable<any> {
+
+    // logout API call
+    return this.http.get<any>(this.apiUrl + 'logout', { withCredentials: true })
+      .pipe(
+        map(response => {
+          
+          // If logout is successful
+          this.isAuthenticated = false;
+
+          // Route to login page after successful logout
+          this.router.navigate(['/login']);
+
+          return response; // Return the response to the calling component if needed
+        })
+      );
   }
 
   // Method to check if the user is logged in
