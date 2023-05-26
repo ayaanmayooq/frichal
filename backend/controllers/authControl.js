@@ -62,11 +62,7 @@ const authUser = (req, res) => {
 }
 
 const sessionLogin = async (req, res) => {
-    console.log(req.session)
     if (req.session.userId) {
-
-        
-
         res.status(200).json({ message: 'Login with session successful' });
     } else {
         console.error('Error logging in with session:', error);

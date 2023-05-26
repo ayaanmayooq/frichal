@@ -15,16 +15,10 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     const body = { email, password };
-    return this.http.post<any>(this.apiUrl + 'login', body, { observe: 'response', withCredentials: true })
+    return this.http.post<any>(this.apiUrl + 'login', body, { withCredentials: true })
       .pipe(
         map(response => {
           // No token received since backend uses express-session
-
-          const headers = response.headers;
-          // Access the specific headers
-          const cookie = headers.get('Set-Cookie');
-
-          console.log(cookie);
 
           this.isAuthenticated = true;
 

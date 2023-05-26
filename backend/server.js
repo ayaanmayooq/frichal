@@ -36,8 +36,7 @@ app.use(
         cookie: {
             // imprtant config (very important)
             maxAge: 24 * 60 * 60 * 1000, // session expiration time (in milliseconds)
-            sameSite: 'lax', // Enable cross-site access
-            secure: false,
+            secure: false, // true for HTTPS
         },
     })
 );
