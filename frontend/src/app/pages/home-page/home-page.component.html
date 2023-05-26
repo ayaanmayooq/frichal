@@ -1,15 +1,9 @@
 <header>
   <div class="user-info">
-    <!--<img [src]="profilePictureUrl" alt="Profile Picture" class="profile-picture">-->
-    <span class="username">{{ username }}</span>
-    <button class="logout-button" (click)="logout()">Logout</button>
+    <img src="assets/dummy-pfp.jpg" alt="Profile Picture" class="profile-picture">
+    <span class="username">{{ user?.email }}</span>
   </div>
+  <button class="logout-button" (click)="logout()">Logout</button>
 </header>
 
-<!-- Render only if the user is not null -->
-<h1>{{ user?.email }}</h1>
-<div *ngIf="user">
-  <h1>Email: {{ user.email }}</h1>
-  <!-- Other user information -->
-</div>
-<!-- Rest of the component content -->
+<!-- Rest of the page content -->
