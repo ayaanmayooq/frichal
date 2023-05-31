@@ -48,4 +48,17 @@ export class HomePageComponent implements OnInit {
     // Clear the user object in the component
     this.user = null;
   }
+
+  isDropdownOpen: boolean = false;
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  dropDownSettings = false;
+
+  toggleSettingsDropdown(event: MouseEvent) {
+    event.preventDefault(); // Prevent the default link behavior
+    this.dropDownSettings = !this.dropDownSettings;
+  }
 }

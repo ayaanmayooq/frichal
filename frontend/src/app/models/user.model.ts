@@ -3,7 +3,8 @@ export interface User {
   username: string;
   email: string;
   password: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   bio: string;
   sentRequests: string[];
   receivedRequests: string[];

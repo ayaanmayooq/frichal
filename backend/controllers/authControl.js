@@ -3,10 +3,11 @@ const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { username, email, password, firstName, lastName } = req.body;
+        console.log(req.body)
 
         // Call the signup static function on the User model
-        const newUser = await User.register(email, password);
+        const newUser = await User.register(username, email, password, firstName, lastName);
 
         res.status(201).json({ message: 'User registered successfully', user: newUser });
     } catch (error) {

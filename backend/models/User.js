@@ -16,7 +16,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    fullName: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
         type: String,
         required: true
     },
@@ -43,7 +47,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Static function for user register
-userSchema.statics.register = async function (email, password) {
+userSchema.statics.register = async function (username, email, password, firstName, lastName) {
     try {
         // Check if user already exists
         const existingUser = await this.findOne({ email });
@@ -55,7 +59,7 @@ userSchema.statics.register = async function (email, password) {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
-        const newUser = new this({ email, password: hashedPassword });
+        const newUser = new this({ username, email, password: hashedPassword, firstName, lastName });
         await newUser.save();
 
         return newUser;

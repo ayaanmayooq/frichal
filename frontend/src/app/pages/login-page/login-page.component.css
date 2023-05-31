@@ -14,4 +14,27 @@
   z-index: 1;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 12px;
+  opacity: 0; /* Set initial opacity to 0 */
 }
+
+.register-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  opacity: 0; /* Set initial opacity to 0 */
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+

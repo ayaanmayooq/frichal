@@ -15,7 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component'
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component'
     RegisterComponent,
     HomeComponent,
     LoginPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    ProfilePageComponent
     
   ],
   imports: [

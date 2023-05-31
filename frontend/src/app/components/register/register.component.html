@@ -1,21 +1,17 @@
-<div class="register-box">
-  <h2>Register</h2>
-  <form>
-    <div class="user-box">
-      <input type="text" name="" required="">
-      <label>Username</label>
+
+<div class="register-container">
+  <div class="register-box">
+    <div class="register-logo">
+      <img src="assets/strawhat.png" alt="Logo">
     </div>
-    <div class="user-box">
-      <input type="text" name="" required="">
-      <label>Email</label>
-    </div>
-    <div class="user-box">
-      <input type="password" name="" required="">
-      <label>Password</label>
-    </div>
-    <a href="#">
-      <div class="loginbox"></div>
-      Register
-    </a>
-  </form>
+    <form (ngSubmit)="register()" class="register-form">
+      <input type="text" [(ngModel)]="username" name="username" placeholder="Username" class="register-input" required>
+      <input type="text" [(ngModel)]="email" name="email" placeholder="Email" class="register-input" required>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="register-input" required>
+      <input type="text" [(ngModel)]="firstName" name="firstName" placeholder="First Name" class="register-input" required>
+      <input type="text" [(ngModel)]="lastName" name="lastName" placeholder="Last Name" class="register-input" required>
+
+      <button type="submit" class="register-button">Register</button>
+    </form>
+  </div>
 </div>

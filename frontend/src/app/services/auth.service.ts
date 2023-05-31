@@ -75,4 +75,19 @@ export class AuthService {
   setLoggedIn(loginStatus: boolean) {
     this.isAuthenticated = true;
   }
+
+  // Method for registering user
+  register(info: any) {
+    const body = info;
+
+    // Later include client-side bcrypt password hashing for increased security
+
+    return this.http.post<any>(this.apiUrl + 'register', body, { withCredentials: true })
+      .pipe(
+        map(response => {
+
+          return response; // Return the response to the calling component if needed
+        })
+      );
+  }
 }

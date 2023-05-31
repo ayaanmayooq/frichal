@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   
   { path: 'login', component: LoginPageComponent },
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: '/login' }, // Handle other unknown routes
   { path: '', redirectTo: '/login', pathMatch: 'full' },

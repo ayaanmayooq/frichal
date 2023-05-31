@@ -1,6 +1,15 @@
 
 <div class="page-container">
-  <app-login class="login-box"></app-login>
+  <div *ngIf="showLoginBox" [@fadeInOut] class="login-box fade-in">
+    <app-login [ngClass]="{ 'login-box': true, 'fade-in': showLoginBox, 'fade-out': !showLoginBox }"></app-login>
+  </div>
+
+  <div *ngIf="showRegisterBox" [@fadeInOut] class="register-box fade-in">
+    <app-register [ngClass]="{ 'register-box': true, 'fade-in': showRegisterBox, 'fade-out': !showRegisterBox }"></app-register>
+  </div>
+
+  <button (click)="toggleRegisterBox()" class="toggle-button">Toggle Register Box</button>
+
 </div>
 
 
