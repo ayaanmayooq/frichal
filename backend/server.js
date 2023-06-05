@@ -35,7 +35,7 @@ app.use(
         store: sessionStore, // Use the session store
         cookie: {
             // imprtant config (very important)
-            maxAge: 24 * 60 * 60 * 1000, // session expiration time (in milliseconds)
+            maxAge: 3 * 60 * 60 * 1000, // session expiration time (in milliseconds)
             secure: false, // true for HTTPS
         },
     })

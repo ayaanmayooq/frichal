@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
@@ -16,10 +16,12 @@ export class HomePageComponent implements OnInit {
 
   constructor(private userService: UserService, private authService: AuthService, private http: HttpClient) { }
 
+  // Gets user data when page is instantiated
   ngOnInit(): void {
     this.getUserData();
   }
 
+  // Function to get user data
   getUserData(): void {
     this.userService.getUserData().subscribe(
       (response) => {
@@ -32,6 +34,9 @@ export class HomePageComponent implements OnInit {
     );
   }
 
+  //
+  // Function that logs the user out
+  //
   logout(): void {
     // Perform the logout logic, such as clearing the user session
     // You can also make an API call to the backend to invalidate the user session
@@ -49,12 +54,10 @@ export class HomePageComponent implements OnInit {
     this.user = null;
   }
 
-  isDropdownOpen: boolean = false;
-
-  toggleDropdown(): void {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
+ 
+  //
+  // Example dropdown function
+  //
   dropDownSettings = false;
 
   toggleSettingsDropdown(event: MouseEvent) {
