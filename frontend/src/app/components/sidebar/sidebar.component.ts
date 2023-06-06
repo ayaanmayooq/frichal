@@ -13,5 +13,57 @@ export class SidebarComponent {
   @Output() logout: EventEmitter<any> = new EventEmitter<any>();
 
 
+  //
+  // Functionality for extending sidebars
+  //
+  extendHome = false;
+  extendSocial = false;
+  extendAnalytics = false;
+  extendNotifs = false;
+  extendSettings = false;
 
+  extendHomeSidebar(event: Event) {
+    this.extendHome = !this.extendHome;
+    this.extendSocial = false;
+    this.extendAnalytics = false;
+    this.extendNotifs = false;
+    this.extendSettings = false;
+    event.preventDefault();
+  }
+
+  extendSocialSidebar(event: Event) {
+    this.extendHome = false;
+    this.extendSocial = !this.extendSocial;
+    this.extendAnalytics = false;
+    this.extendNotifs = false;
+    this.extendSettings = false;
+    event.preventDefault();
+  }
+
+  extendAnalyticsSidebar(event: Event) {
+    this.extendHome = false;
+    this.extendSocial = false;
+    this.extendAnalytics = !this.extendAnalytics;
+    this.extendNotifs = false;
+    this.extendSettings = false;
+    event.preventDefault();
+  }
+
+  extendNotifsSidebar(event: Event) {
+    this.extendHome = false;
+    this.extendSocial = false;
+    this.extendAnalytics = false;
+    this.extendNotifs = !this.extendNotifs;
+    this.extendSettings = false;
+    event.preventDefault();
+  }
+
+  extendSettingsSidebar(event: Event) {
+    this.extendHome = false;
+    this.extendSocial = false;
+    this.extendAnalytics = false;
+    this.extendNotifs = false;
+    this.extendSettings = !this.extendSettings;
+    event.preventDefault();
+  }
 }

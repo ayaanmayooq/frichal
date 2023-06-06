@@ -55,13 +55,4 @@ export class HomePageComponent implements OnInit {
   }
 
  
-  //
-  // Example dropdown function
-  //
-  dropDownSettings = false;
-
-  toggleSettingsDropdown(event: MouseEvent) {
-    event.preventDefault(); // Prevent the default link behavior
-    this.dropDownSettings = !this.dropDownSettings;
-  }
 }

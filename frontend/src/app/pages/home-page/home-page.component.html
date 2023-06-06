@@ -1,2 +1,12 @@
 
-<app-sidebar [user]="user" (logout)="logout()"></app-sidebar>
+<div class="relative min-h-screen flex">
+  <app-sidebar [user]="user" (logout)="logout()"></app-sidebar>
+
+  <!-- Page content -->
+  <main id="content" class="flex-1 pb-12 space-y-6 overflow-y-auto bg-gray-200 lg:h-screen md:space-y-8">
+
+    <app-topbar [user]="user" (logout)="logout()"></app-topbar>
+
+  </main>
+
+</div>
