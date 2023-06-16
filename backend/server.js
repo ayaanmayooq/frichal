@@ -71,6 +71,9 @@ app.use('/api/auth', authRoutes);
 const friendRoutes = require('./routes/friendRoutes')
 app.use('/api/friend', friendRoutes);
 
+const challengeRoutes = require('./routes/challengeRoutes')
+app.use('/api/challenge', challengeRoutes);
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);

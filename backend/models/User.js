@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -43,7 +44,11 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    challenges: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Challenge'
+    }]
 });
 
 // Static function for user register
