@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePageComponent implements OnInit {
   username: string = 'John Doe';
-  items: number[] = [1, 2, 3, 4, 5];
+  challenges: number[] = [1, 2, 3, 4, 5];
   user: User | null = null;
 
   constructor(private userService: UserService, private authService: AuthService, private http: HttpClient) { }
@@ -54,5 +54,6 @@ export class HomePageComponent implements OnInit {
     this.user = null;
   }
 
+  createChallenge: boolean = false;
  
 }

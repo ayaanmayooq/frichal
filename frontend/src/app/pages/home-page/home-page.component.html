@@ -5,86 +5,10 @@
   <!-- Page content -->
   <main id="content" class="flex-1 pb-12 space-y-6 overflow-y-auto bg-gray-200 lg:h-screen md:space-y-8">
 
-    <app-topbar [user]="user" (logout)="logout()"></app-topbar>
+    <topbar [user]="user" (logout)="logout()"></topbar>
 
-    <!-- new component later -->
-    <section class="flex flex-col w-full px-6 md:justify-between md:items-center md:flex-row">
-      <div>
-        <h2 class="text-3xl font-medium text-gray-800">Challenges</h2>
-        <p class="mt-2 text-sm text-gray-500">Compete against your friends</p>
-      </div>
+    <challenge-dash [challenges]="challenges"></challenge-dash>      
 
-      <div class="flex flex-col mt-6 md:flex-row md:-mx-1 md:mt-0">
-        <button class="px-6 py-3 focus:outline-none text-gray-500 transition-colors duration-300 rounded-lg md:mx-1 hover:bg-gray-400 hover:text-white">
-          <div class="flex items-center justify-center -mx-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-            </svg>
-
-            <span class="mx-1 text-sm capitalize">Manage dashboard</span>
-          </div>
-        </button>
-
-        <button class="px-6 py-3 focus:outline-none mt-4 text-white bg-blue-600 rounded-lg md:mt-0 md:mx-1 hover:bg-blue-500">
-          <div class="flex items-center justify-center -mx-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-
-            <span class="mx-1 text-sm capitalize">new Challenge</span>
-          </div>
-        </button>
-      </div>
-    </section>
-
-
-    <!-- challenge boxes -->
-    <section class="grid grid-cols-2 gap-8 px-6 xl:grid-cols-3 2xl:grid-cols-3 md:grid-cols-2">
-      <ng-container *ngFor="let item of items">
-        <button class="flex items-center h-64 px-6 py-8 bg-white rounded-lg shadow-md hover:shadow-gray-500">
-          <div class="flex items-center -mx-2">
-            <!--<svg class="mx-2" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="35" cy="35" r="35" fill="#713BDB" fill-opacity="0.05" />
-              <path d="M26 44C26 40.625 30.5 40.625 32.75 38.375C33.875 37.25 30.5 37.25 30.5 31.625C30.5 27.8754 31.9996 26 35 26C38.0004 26 39.5 27.8754 39.5 31.625C39.5 37.25 36.125 37.25 37.25 38.375C39.5 40.625 44 40.625 44 44" stroke="#6F52ED" stroke-width="2" stroke-linecap="square" />
-            </svg>-->
-
-            <div class="mx-2">
-              <h3 class="text-2xl font-medium text-gray-800">Challenge {{ item }}</h3>
-              <p class="mt-1 text-sm text-gray-500">work in-progress</p>
-            </div>
-          </div>
-        </button>
-      </ng-container>
-
-      <!--<button class="flex items-center h-64 px-6 py-8 bg-white rounded-lg shadow-md hover:shadow-gray-500">
-        <div class="flex items-center -mx-2">
-          <svg class="mx-2" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="35" cy="35" r="35" fill="#713BDB" fill-opacity="0.05" />
-            <path d="M26 35.5H44" stroke="#6F52ED" stroke-width="2" stroke-linecap="square" />
-            <path d="M35 26V44" stroke="#6F52ED" stroke-width="2" stroke-linecap="square" />
-          </svg>
-
-          <div class="mx-2">
-            <h3 class="text-2xl font-medium text-gray-800">New challenge</h3>
-          </div>
-        </div>
-      </button>-->
-
-      <button class="flex items-center justify-center h-64 px-6 py-8 bg-white rounded-full shadow-md hover:shadow-gray-500">
-        <div class="flex items-center">
-          <svg class="mx-2" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="35" cy="35" r="35" fill="#713BDB" fill-opacity="0.05" />
-            <path d="M26 35.5H44" stroke="#6F52ED" stroke-width="2" stroke-linecap="square" />
-            <path d="M35 26V44" stroke="#6F52ED" stroke-width="2" stroke-linecap="square" />
-          </svg>
-
-          <div class="mx-2">
-            <h3 class="text-2xl font-medium text-gray-800">New challenge</h3>
-          </div>
-        </div>
-      </button>
-
-    </section>
 
   </main>
 

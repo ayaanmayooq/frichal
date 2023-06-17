@@ -23,7 +23,8 @@ import { HomeSidebarComponent } from './components/home-sidebar/home-sidebar.com
 import { AnalyticsSidebarComponent } from './components/analytics-sidebar/analytics-sidebar.component';
 import { NotifsSidebarComponent } from './components/notifs-sidebar/notifs-sidebar.component';
 import { SettingsSidebarComponent } from './components/settings-sidebar/settings-sidebar.component';
-import { TopbarComponent } from './components/topbar/topbar.component'
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { ChallengeDashComponent } from './components/challenge-dash/challenge-dash.component'
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TopbarComponent } from './components/topbar/topbar.component'
     AnalyticsSidebarComponent,
     NotifsSidebarComponent,
     SettingsSidebarComponent,
-    TopbarComponent
+    TopbarComponent,
+    ChallengeDashComponent
     
   ],
   imports: [
