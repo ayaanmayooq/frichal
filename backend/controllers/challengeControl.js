@@ -3,27 +3,34 @@ const Challenge = require('../models/Challenge');
 
 const createChallenge = async (req, res) => {
     try {
-        const { name, creatorId, participantIds } = req.body;
-        console.log(req.body)
+        const challengeData = req.body.challengeData;
+        const { name, description, theme, tasks, participantIds, creatorId } = challengeData;
+        console.log(name, description, theme, tasks, participantIds, creatorId);
 
         const creator = await User.findById(creatorId);
 
         // Creating challenge object
         const newChallenge = new Challenge({ name, creator });
 
-        creator.challenges.push(newChallenge); // Only gives ID, use populate() to return the whole object
+        if (creator.challenges) {
+            creator.challenges.push(newChallenge); // Only gives ID, use populate() to return the whole object
+        } else {
+            creator.challenges = [];
+        }
         await creator.save();
 
         //newChallenge.participants.push(creator);
 
         // Adding challenge to all participants
-        participantIds.forEach(async participantId => {
-            const participant = await User.findById(participantId);
-            participant.challenges.push(newChallenge);
-            await participant.save();
+        if (participantIds) {
+            participantIds.forEach(async participantId => {
+                const participant = await User.findById(participantId);
+                participant.challenges.push(newChallenge);
+                await participant.save();
 
-            newChallenge.participants.push(participant);
-        });
+                newChallenge.participants.push(participant);
+            });
+        }
 
 
         await newChallenge.save()
