@@ -3,6 +3,7 @@ import { Challenge } from '../../models/challenge.model';
 import { ChallengeService } from '../../services/challenge.service'
 import { UserService } from '../../services/user.service'
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'challenge-dash',
@@ -10,18 +11,31 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@ang
   styleUrls: ['./challenge-dash.component.css']
 })
 export class ChallengeDashComponent implements OnInit {
-  //@Input() challenges: Challenge[] | null = null;
 
-  @Input() challenges: number[] | null = null;
+  challenges!: Challenge[];
 
   creatingChallenge: boolean = false;
   challengeForm!: FormGroup;
 
 
-  constructor(private challengeService: ChallengeService, private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private challengeService: ChallengeService, private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
+
+    this.getUserChallenges();
+  }
+
+  getUserChallenges(): void {
+    this.userService.getUserChallenges().subscribe(
+      (response) => {
+        this.challenges = response.challenges;
+      },
+      (error) => {
+        // Handle error
+        console.error('Error retrieving user information:', error);
+      }
+    );
   }
 
   initializeForm(): void {
@@ -77,6 +91,8 @@ export class ChallengeDashComponent implements OnInit {
         this.challengeService.createChallenge(data).subscribe(
           (response) => {
             // handle response
+            this.getUserChallenges();
+            this.creatingChallenge = false;
           },
           (error) => {
             // Handle error

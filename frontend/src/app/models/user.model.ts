@@ -1,3 +1,5 @@
+import { Challenge } from "./challenge.model";
+
 export interface User {
   _id: string;
   username: string;
@@ -10,4 +12,5 @@ export interface User {
   receivedRequests: string[];
   friends: string[];
   createdAt: Date;
+  challenges: Challenge[];
 }

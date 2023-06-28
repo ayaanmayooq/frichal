@@ -16,4 +16,8 @@ export class UserService {
   getUserData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/data`, { withCredentials: true }); // Different way of writing (will be helpful for complex dynamic urls)
   }
+
+  getUserChallenges(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/data/challenges`, { withCredentials: true });
+  }
 }

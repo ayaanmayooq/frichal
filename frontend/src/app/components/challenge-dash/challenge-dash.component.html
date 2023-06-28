@@ -39,7 +39,7 @@
           </svg>
 
           <div class="mx-2">
-            <h3 class="text-2xl font-medium text-gray-800">Challenge {{ challenge }}</h3>
+            <h3 class="text-2xl font-medium text-gray-800">Challenge {{ challenge.name }}</h3>
             <p class="mt-1 text-sm text-gray-500">work in-progress</p>
           </div>
         </div>
@@ -154,13 +154,17 @@
               <div class="sm:col-span-3">
                 <label for="participant-{{ i }}" class="block text-sm font-medium leading-6 text-gray-900">Participant {{ i + 1 }}</label>
                 <div class="mt-2">
-                  <input [formControlName]="i" id="participant-{{ i }}" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  <!--<input [formControlName]="i" id="participant-{{ i }}" autocomplete="off" class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">-->
+                  <input [formControlName]="i" id="participant-{{ i }}" type="search" class="w-full text-sm bg-gray-100 rounded-md pl-2 focus:bg-white text-gray-900" placeholder="Participant name..." autocomplete="off">
+
                 </div>
               </div>
-              <button type="button" (click)="removeParticipant(i)">Remove</button>
+              <button type="button" (click)="removeParticipant(i)" class="bg-gray-700 text-white active:bg-emerald-600 font-bold uppercase text-sm px-4 py-1.5 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Remove Participant</button>
             </div>
           </div>
-          <button type="button" (click)="addParticipant()">Add Participant</button>
+          <button (click)="addParticipant()" class="bg-gray-700 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            Add Participant
+          </button>
         </div>
 
       </div>

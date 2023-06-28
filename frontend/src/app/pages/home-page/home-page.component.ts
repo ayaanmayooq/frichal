@@ -3,6 +3,7 @@ import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { HttpClient } from '@angular/common/http';
+import { Challenge } from '../../models/challenge.model';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePageComponent implements OnInit {
   username: string = 'John Doe';
-  challenges: number[] = [1, 2, 3, 4, 5];
+  challenges: Challenge[] | undefined;
   user: User | null = null;
 
   constructor(private userService: UserService, private authService: AuthService, private http: HttpClient) { }
@@ -26,6 +27,7 @@ export class HomePageComponent implements OnInit {
     this.userService.getUserData().subscribe(
       (response) => {
         this.user = response.user;
+        this.challenges = this.user?.challenges;
       },
       (error) => {
         // Handle error

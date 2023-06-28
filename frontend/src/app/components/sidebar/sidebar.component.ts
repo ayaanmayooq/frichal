@@ -23,12 +23,12 @@ export class SidebarComponent {
   extendSettings = false;
 
   extendHomeSidebar(event: Event) {
-    this.extendHome = !this.extendHome;
-    this.extendSocial = false;
-    this.extendAnalytics = false;
-    this.extendNotifs = false;
-    this.extendSettings = false;
-    event.preventDefault();
+    //this.extendHome = !this.extendHome;
+    //this.extendSocial = false;
+    //this.extendAnalytics = false;
+    //this.extendNotifs = false;
+    //this.extendSettings = false;
+    //event.preventDefault();
   }
 
   extendSocialSidebar(event: Event) {

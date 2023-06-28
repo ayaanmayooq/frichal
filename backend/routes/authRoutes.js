@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const { registerUser, loginUser, requireAuth, logoutUser, authUser, sessionLogin, sendUserData } = require('../controllers/authControl');
+const { registerUser, loginUser, requireAuth, logoutUser, authUser, sessionLogin, sendUserData, sendUserChallenges } = require('../controllers/authControl');
 
 // Register route
 router.post('/register', registerUser);
@@ -20,6 +20,10 @@ router.post('/sessionlogin', sessionLogin);
 
 // Send user info if logged in
 router.get('/user/data', requireAuth, sendUserData);
+
+// Send user challenges info
+router.get('/user/data/challenges', requireAuth, sendUserChallenges);
+
 
 // Other authentication-related routes
 

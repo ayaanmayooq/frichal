@@ -4,8 +4,8 @@ const Challenge = require('../models/Challenge');
 const createChallenge = async (req, res) => {
     try {
         const challengeData = req.body.challengeData;
-        const { name, description, theme, tasks, participantIds, creatorId } = challengeData;
-        console.log(name, description, theme, tasks, participantIds, creatorId);
+        const { name, description, theme, tasks, participants, participantIds, creatorId } = challengeData;
+        console.log(name, description, theme, tasks, participants, creatorId);
 
         const creator = await User.findById(creatorId);
 
